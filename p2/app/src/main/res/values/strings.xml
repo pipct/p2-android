@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">p2</string>
 
+    <!-- Menu -->
     <string name="action_logout">Logout</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Layouts -->
+    <string name="action_send">Send</string>
+    <string name="hint_send">Meet P2</string>
 </resources>
