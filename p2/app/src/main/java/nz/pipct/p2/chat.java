@@ -4,14 +4,61 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class chat extends ActionBarActivity {
+    ArrayList<Map<String, Object>> messages;
+    ListView messageList;
+    chatAdapter adapter;
+
+    private Boolean loggedIn() {
+        //TODO: Check if logged in
+        return true;
+    }
+
+    private void displayMessage(String post, String name, String time) {
+        Map<String, Object> message = new HashMap<>();
+        message.put("post", post);
+        message.put("time", time);
+        message.put("name", name);
+        messages.add(message);
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        if (loggedIn()) {
+            setContentView(R.layout.activity_chat);
+
+            /* Setup List View */
+            messages = new ArrayList<>();
+            messageList = (ListView)findViewById(R.id.list_chat);
+            adapter = new chatAdapter(this, messages);
+            messageList.setAdapter(adapter);
+
+            /* On send button click */
+            ImageButton btnSend = (ImageButton)findViewById(R.id.btn_send);
+            btnSend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EditText text = (EditText)findViewById(R.id.edit_message);
+                    displayMessage(text.getText().toString(), "Wally West", "π seconds ago");
+                    text.setText("");
+                }
+            });
+        }
+        else {
+            //TODO: Take to login screen
+        }
     }
 
 

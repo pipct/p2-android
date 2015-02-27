@@ -1,17 +1,22 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<RelativeLayout
         android:orientation="vertical"
-        android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".chat"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:focusable="true" android:focusableInTouchMode="true">
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/chatList"
+        android:id="@+id/list_chat"
         android:layout_alignParentTop="true"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"
         android:layout_above="@+id/edit_message" />
 
     <EditText
@@ -36,5 +41,5 @@
         android:contentDescription="Send"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
-
 </RelativeLayout>
+</FrameLayout>
