@@ -6,17 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Map;
 
-public class chatAdapter extends ArrayAdapter<Map<String, Object>> {
+public class chatAdapter extends ArrayAdapter<Message> {
     private final Activity context;
-    private final ArrayList<Map<String, Object>> messages;
+    private final ArrayList<Message> messages;
 
-    public chatAdapter(Activity context, ArrayList<Map<String, Object>> messages) {
+    public chatAdapter(Activity context, ArrayList<Message> messages) {
         super(context, R.layout.chat_message, messages);
         this.context = context;
         this.messages = messages;
@@ -27,17 +26,17 @@ public class chatAdapter extends ArrayAdapter<Map<String, Object>> {
         /* Setup the row */
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.chat_message, null, true);
-        ImageView imgProfile = (ImageView)rowView.findViewById(R.id.img_profile);
-        TextView txtPost = (TextView)rowView.findViewById(R.id.txt_post);
-        TextView txtName = (TextView)rowView.findViewById(R.id.txt_name);
-        TextView txtTime = (TextView)rowView.findViewById(R.id.txt_time);
+        ImageView imgProfile = (ImageView) rowView.findViewById(R.id.img_profile);
+        TextView txtPost = (TextView) rowView.findViewById(R.id.txt_post);
+        TextView txtName = (TextView) rowView.findViewById(R.id.txt_name);
+        TextView txtTime = (TextView) rowView.findViewById(R.id.txt_time);
 
         /* Put data in the row */
-        Map<String, Object> message = messages.get(position);
+        Message message = messages.get(position);
         imgProfile.setImageDrawable(context.getResources().getDrawable(R.mipmap.test_profile)); //TODO: Get image from ByteArray in map
-        txtPost.setText(message.get("post").toString());
-        txtName.setText(message.get("name").toString()+" | ");
-        txtTime.setText(message.get("time").toString());
+        txtPost.setText(message.post);
+        txtName.setText(message.name + " | ");
+        txtTime.setText(message.time);
 
         return rowView;
     }
