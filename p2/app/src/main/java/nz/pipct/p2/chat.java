@@ -1,5 +1,6 @@
 package nz.pipct.p2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -21,7 +22,7 @@ public class chat extends ActionBarActivity {
 
     private Boolean loggedIn() {
         //TODO: Check if logged in
-        return true;
+        return false;
     }
 
     private void displayMessage(String post, String name, String time) {
@@ -56,7 +57,9 @@ public class chat extends ActionBarActivity {
                 }
             });
         } else {
-            //TODO: Take to login screen
+            //Take to login screen
+            Intent intent = new Intent(chat.this, login.class);
+            startActivity(intent);
         }
     }
 

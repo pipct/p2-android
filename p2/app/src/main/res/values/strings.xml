@@ -8,6 +8,10 @@
     <!-- Layouts -->
     <string name="action_send">Send</string>
     <string name="hint_send">Meet P2</string>
-    <string name="hint_name">Chatroom ID</string>
+    <string name="hint_request">Access Code</string>
     <string name="action_register">Request to join</string>
+    <string name="title_activity_login">p2</string>
+
+    <!-- Programmable Stuff -->
+    <string name="toast_no_chat_exists">Invalid access code</string>
 </resources>
