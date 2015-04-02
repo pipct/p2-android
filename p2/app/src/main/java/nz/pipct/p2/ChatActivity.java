@@ -3,7 +3,6 @@ package nz.pipct.p2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,13 +11,12 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
-public class chat extends ActionBarActivity {
+public class ChatActivity extends ActionBarActivity {
     ArrayList<Message> messages;
     ListView messageList;
-    chatAdapter adapter;
+    ChatAdapter adapter;
 
     private Boolean loggedIn() {
         //TODO: Check if logged in
@@ -43,7 +41,7 @@ public class chat extends ActionBarActivity {
             /* Setup List View */
             messages = new ArrayList<>();
             messageList = (ListView) findViewById(R.id.list_chat);
-            adapter = new chatAdapter(this, messages);
+            adapter = new ChatAdapter(this, messages);
             messageList.setAdapter(adapter);
 
             /* On send button click */
@@ -58,7 +56,7 @@ public class chat extends ActionBarActivity {
             });
         } else {
             //Take to login screen
-            Intent intent = new Intent(chat.this, login.class);
+            Intent intent = new Intent(ChatActivity.this, login.class);
             startActivity(intent);
         }
     }

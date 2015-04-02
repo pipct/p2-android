@@ -11,11 +11,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class chatAdapter extends ArrayAdapter<Message> {
+public class ChatAdapter extends ArrayAdapter<Message> {
     private final Activity context;
     private final ArrayList<Message> messages;
 
-    public chatAdapter(Activity context, ArrayList<Message> messages) {
+    public ChatAdapter(Activity context, ArrayList<Message> messages) {
         super(context, R.layout.chat_message, messages);
         this.context = context;
         this.messages = messages;
